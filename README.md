@@ -1,2 +1,2 @@
 # leave
-AARCS Leave management system
+AARCS Leave Management System
