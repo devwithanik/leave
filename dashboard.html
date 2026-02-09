@@ -1,10 +1,59 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <title>Dashboard</title>
+  <style>
+    #leaveForm {
+      display: none;
+      margin-top: 20px;
+      padding: 15px;
+      border: 1px solid #ccc;
+      max-width: 400px;
+    }
+  </style>
+</head>
+
 <body onload="requireLogin()">
 
-<h2>People On Leave Today</h2>
-<ul id="list"></ul>
+<h2>Dashboard</h2>
+
+<button onclick="showLeaveForm()">Leave Entry</button>
+
+<div id="leaveForm">
+  <h3>Leave Entry</h3>
+
+  <form
+    action="https://script.google.com/macros/s/AKfycbzkxq5J6QRmlysloyQ_AtVbv8I7zVL8tsBPlAxYamDylLilXLOoUsVfZWJFVB-Vu5y9mg/exec"
+    method="POST"
+  >
+    <input type="hidden" name="action" value="addLeave">
+    <input type="hidden" name="bioId" id="bioId">
+
+    <label>Leave Type</label><br>
+    <select name="leaveType" required>
+      <option value="">Select</option>
+      <option value="Casual">Casual</option>
+      <option value="Sick">Sick</option>
+      <option value="Annual">Annual</option>
+    </select><br><br>
+
+    <label>From Date</label><br>
+    <input type="date" name="fromDate" required><br><br>
+
+    <label>To Date</label><br>
+    <input type="date" name="toDate" required><br><br>
+
+    <button type="submit">Submit Leave</button>
+  </form>
+</div>
 
 <script src="js/app.js"></script>
+
+<script>
+  function showLeaveForm() {
+    document.getElementById("leaveForm").style.display = "block";
+  }
+</script>
+
 </body>
 </html>
