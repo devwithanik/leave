@@ -1,3 +1,4 @@
+console.log("app.js loaded");
 const API = "https://script.google.com/macros/s/AKfycbzE7QoVZFSiY9deZ5kQGoHvyQCOG2RLpi4Fv_4ORCAazBX5CilPMTp-S9yYMG4pE-cHLQ/exec";
 
 // LOGIN
