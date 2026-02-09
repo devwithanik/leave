@@ -2,6 +2,31 @@ console.log("app.js loaded");
 const API = "https://script.google.com/macros/s/AKfycbzE7QoVZFSiY9deZ5kQGoHvyQCOG2RLpi4Fv_4ORCAazBX5CilPMTp-S9yYMG4pE-cHLQ/exec";
 
 // LOGIN
+// function login() {
+//   const bioId = document.getElementById("bioId").value;
+
+//   fetch(API, {
+//     method: "POST",
+//     headers: { "Content-Type": "application/json" },
+//     body: JSON.stringify({ action: "login", bioId })
+//   })
+//   .then(res => res.json())
+//   .then(data => {
+//     console.log("Response:", data);
+//     if (data.status === "ok") {
+//       localStorage.setItem("bioId", bioId);
+//       window.location.href = "dashboard.html";
+//     } else {
+//       alert("Invalid Bio ID");
+//     }
+//   })
+//   .catch(err => {
+//     console.error("Error:", err);
+//     alert("Backend error");
+//   });
+// }
+const API = "PASTE_NEW_DEPLOYMENT_URL";
+
 function login() {
   const bioId = document.getElementById("bioId").value;
 
@@ -10,9 +35,12 @@ function login() {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ action: "login", bioId })
   })
-  .then(res => res.json())
-  .then(data => {
-    console.log("Response:", data);
+  .then(res => res.text())   // ← important for debugging
+  .then(text => {
+    console.log("Raw response:", text);
+
+    const data = JSON.parse(text);
+
     if (data.status === "ok") {
       localStorage.setItem("bioId", bioId);
       window.location.href = "dashboard.html";
@@ -21,8 +49,8 @@ function login() {
     }
   })
   .catch(err => {
-    console.error("Error:", err);
-    alert("Backend error");
+    console.error("FETCH ERROR:", err);
+    alert("Backend error (check console)");
   });
 }
 
