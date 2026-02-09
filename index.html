@@ -1,32 +1,12 @@
-<!DOCTYPE html>
-<html>
-<body>
-
-<h2>Login</h2>
-
-<form 
+<form
   action="https://script.google.com/macros/s/AKfycbzE7QoVZFSiY9deZ5kQGoHvyQCOG2RLpi4Fv_4ORCAazBX5CilPMTp-S9yYMG4pE-cHLQ/exec"
   method="POST"
   target="hiddenFrame"
   onsubmit="saveBioId()"
 >
-  <input name="action" value="login" type="hidden">
-  <input name="bioId" id="bioId" placeholder="Bio ID" required>
+  <input type="hidden" name="action" value="login">
+  <input id="bioId" name="bioId" placeholder="Bio ID" required>
   <button type="submit">Login</button>
 </form>
 
 <iframe name="hiddenFrame" style="display:none;"></iframe>
-
-<script>
-function saveBioId() {
-  const bioId = document.getElementById("bioId").value;
-  localStorage.setItem("bioId", bioId);
-
-  setTimeout(() => {
-    window.location.href = "dashboard.html";
-  }, 800);
-}
-</script>
-
-</body>
-</html>
