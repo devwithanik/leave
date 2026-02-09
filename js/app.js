@@ -5,30 +5,29 @@ const API = "https://script.google.com/macros/s/AKfycbzE7QoVZFSiY9deZ5kQGoHvyQCO
 function login() {
   const bioId = document.getElementById("bioId").value;
 
-  const formData = new URLSearchParams();
-  formData.append("action", "login");
-  formData.append("bioId", bioId);
+  const body = `action=login&bioId=${encodeURIComponent(bioId)}`;
 
   fetch(API, {
     method: "POST",
-    body: formData   // ← NO headers
+    body: body
   })
-  .then(res => res.text())
-  .then(text => {
-    console.log("Raw response:", text);
-    const data = JSON.parse(text);
+    .then(res => res.text())
+    .then(text => {
+      console.log("Raw response:", text);
 
-    if (data.status === "ok") {
-      localStorage.setItem("bioId", bioId);
-      window.location.href = "dashboard.html";
-    } else {
-      alert("Invalid Bio ID");
-    }
-  })
-  .catch(err => {
-    console.error("Fetch failed:", err);
-    alert("Backend error");
-  });
+      const data = JSON.parse(text);
+
+      if (data.status === "ok") {
+        localStorage.setItem("bioId", bioId);
+        window.location.href = "dashboard.html";
+      } else {
+        alert("Invalid Bio ID");
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      alert("Backend error");
+    });
 }
 
 // ADD LEAVE
