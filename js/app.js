@@ -2,22 +2,25 @@ console.log("app.js loaded");
 const API = "https://script.google.com/macros/s/AKfycbzE7QoVZFSiY9deZ5kQGoHvyQCOG2RLpi4Fv_4ORCAazBX5CilPMTp-S9yYMG4pE-cHLQ/exec";
 
 // LOGIN
-function login() {
-  const bioId = document.getElementById("bioId").value;
+// function login() {
+//   const bioId = document.getElementById("bioId").value;
 
-  fetch(API, {
-    method: "POST",
-    body: JSON.stringify({ action: "login", bioId })
-  })
-  .then(res => res.json())
-  .then(data => {
-    if (data.status === "ok") {
-      localStorage.setItem("bioId", bioId);
-      window.location = "dashboard.html";
-    } else {
-      alert("Invalid Bio ID");
-    }
-  });
+//   fetch(API, {
+//     method: "POST",
+//     body: JSON.stringify({ action: "login", bioId })
+//   })
+//   .then(res => res.json())
+//   .then(data => {
+//     if (data.status === "ok") {
+//       localStorage.setItem("bioId", bioId);
+//       window.location = "dashboard.html";
+//     } else {
+//       alert("Invalid Bio ID");
+//     }
+//   });
+// }
+function login() {
+  alert("Login button clicked");
 }
 
 // ADD LEAVE
